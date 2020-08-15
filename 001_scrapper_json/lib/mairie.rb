@@ -2,7 +2,6 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 class Mairie
-
   def initialize
     $url = "http://annuaire-des-mairies.com" # Le lien de base
 
@@ -44,8 +43,10 @@ class Mairie
     # Pour afficher le resultat
   def afficeur
     @city_link.map do |element|
-      result = []
-      result << {get_city_names(element) => get_townhall_email(element)}
+      villes = get_city_names(element)
+      email = get_townhall_email(element)
+      @result = []
+      @result << {villes => email}
     end
   end
 
